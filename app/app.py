@@ -10,6 +10,7 @@ letters = []
 csv_file_path = "data\shareholders_letter.csv"
 with open(csv_file_path, "r") as csv_file:
     reader = csv.reader(csv_file)
+    next(reader)
     for row in reader:
         letters.append(row[3])
 
@@ -18,15 +19,14 @@ texts = []
 
 tokenizer = RegexpTokenizer(r'\w+')
 stoplist = get_stop_words('en')
-p_stemmer = PorterStemmer()
+stemmer = PorterStemmer()
 
 for text in letters:
     raw = text.lower()
     tokens = tokenizer.tokenize(raw)
     stopped_tokens = [text for text in tokens if text not in stoplist]
-    stemmed_tokens = [p_stemmer.stem(text) for text in stopped_tokens]
+    stemmed_tokens = [stemmer.stem(text) for text in stopped_tokens]
     texts.append(stemmed_tokens)
-
 
 ## removing tokens which appear only once
 all_tokens = sum(texts, [])
@@ -37,5 +37,3 @@ clear_texts = []
 for text in texts:
     once_tokens = [word for word in text if word not in tokens_once]
     clear_texts.append(once_tokens)
-
-print (clear_texts [:5])
