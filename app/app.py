@@ -23,6 +23,19 @@ p_stemmer = PorterStemmer()
 for text in letters:
     raw = text.lower()
     tokens = tokenizer.tokenize(raw)
-    stopped_tokens = [text for text in tokens if not text in stoplist]
-    stemmed_tokens = [p_stemmer.stem(i) for i in stopped_tokens]
+    stopped_tokens = [text for text in tokens if text not in stoplist]
+    stemmed_tokens = [p_stemmer.stem(text) for text in stopped_tokens]
     texts.append(stemmed_tokens)
+
+
+## removing tokens which appear only once
+all_tokens = sum(texts, [])
+tokens_once = set(word for word in set(all_tokens) if all_tokens.count(word) == 1)
+
+clear_texts = []
+
+for text in texts:
+    once_tokens = [word for word in text if word not in tokens_once]
+    clear_texts.append(once_tokens)
+
+print (clear_texts [:5])
