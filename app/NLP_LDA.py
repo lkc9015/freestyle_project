@@ -1,11 +1,6 @@
 import csv
-import warnings
-warnings.filterwarnings(action='ignore', category=UserWarning, module='gensim')
-import gensim
-from nltk.tokenize import RegexpTokenizer
-from stop_words import get_stop_words
-from nltk.stem.porter import PorterStemmer
-from gensim import corpora, models, similarities
+import sklearn.feature_extraction.text as text
+import numpy as np
 from sklearn.decomposition import LatentDirichletAllocation
 
 ## Read csv file ###
@@ -19,39 +14,28 @@ with open(csv_file_path, "r") as csv_file:
         letters.append(row[3])
 
 
-### tokenize letters' texts and remove stopwords ###
-texts = []
+#### Change the texts into Documents Term Matix (dtm) ####
+# remove stopwords and words that appear less than five times
+vectorizer = text.CountVectorizer(input = letters,  stop_words = 'english', min_df = 10)
+# create dtm and convert it into an array
+dtm = vectorizer.fit_transform(letters).toarray()
+# list of words and change it to an array
+vocab = np.array(vectorizer.get_feature_names())
 
-tokenizer = RegexpTokenizer(r'\w+')
-stoplist = get_stop_words('en')
-stemmer = PorterStemmer()
-
-for text in letters:
-    lower = text.lower()
-    tokens = tokenizer.tokenize(lower)
-    stopped_tokens = [text for text in tokens if text not in stoplist]
-    stemmed_tokens = [stemmer.stem(text) for text in stopped_tokens]
-    texts.append(stemmed_tokens)
-
-### remove tokens which appear less than five times ###
-all_tokens = sum(texts, [])
-tokens_once = set(word for word in set(all_tokens) if all_tokens.count(word) == 5)
-
-clean_texts = []
-
-for text in texts:
-    once_tokens = [word for word in text if word not in tokens_once]
-    clean_texts.append(once_tokens)
-
-### Change the texts into Documents Term Matix (dtm) ####
-# turn the tokenized documents into a term dictionary
-dictionary = corpora.Dictionary(clean_texts)
-# convert tokenized documents into a document-term matrix
-dtm = [dictionary.doc2bow(text) for text in clean_texts]
 
 ### Generate ten topics & ten top words in each topic ###
-num_topics = 10
-lda = gensim.models.ldamodel.LdaModel(dtm, num_topics=num_topics, id2word = dictionary, passes=10)
+n_topics = 10
+n_top_words = 10
+# classifier
+lda = LatentDirichletAllocation(n_topics = n_topics, random_state=1)
+doctopic = lda.fit_transform(dtm)
 
-for i in  lda.show_topics(num_words=4):
-    print (i[0], i[1])
+
+### Print out topic words ###
+topic_words = []
+for topic in lda.components_:
+    word_idx = np.argsort(topic)[::-1][0:n_top_words]
+    topic_words.append([vocab[i] for i in word_idx])
+
+for topic in range(len(topic_words)):
+    print(" + Topic {}: {}".format(topic, ' '.join(topic_words[topic])))

@@ -15,23 +15,23 @@ with open(csv_file_path, "r") as csv_file:
 
 #### Change the texts into Documents Term Matix (dtm) ####
 # remove stopwords and words that appear less than five times
-vectorizer = text.CountVectorizer(input='letters', stop_words='english', min_df=5)
+vectorizer = text.CountVectorizer(input='letters', stop_words='english', min_df=10)
 # create dtm and convert it into an array
 dtm = vectorizer.fit_transform(letters).toarray()
 # list of words and change it to an array
 vocab = np.array(vectorizer.get_feature_names())
 
 ### Generate ten topics & ten top words in each topic ###
-num_topics = 10
-num_top_words = 10
+n_topics = 10
+n_top_words = 10
 # classifier
-nmf = decomposition.NMF(n_components=num_topics, random_state=1)
+nmf = decomposition.NMF(n_components=n_topics, random_state=1)
 doctopic = nmf.fit_transform(dtm)
 
 ### Print out topic words ###
 topic_words = []
 for topic in nmf.components_:
-    word_idx = np.argsort(topic)[::-1][0:num_top_words]
+    word_idx = np.argsort(topic)[::-1][0:n_top_words]
     topic_words.append([vocab[i] for i in word_idx])
 
 for topic in range(len(topic_words)):
