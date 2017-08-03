@@ -6,8 +6,9 @@ from nltk.tokenize import RegexpTokenizer
 from stop_words import get_stop_words
 from nltk.stem.porter import PorterStemmer
 from gensim import corpora, models, similarities
+from sklearn.decomposition import LatentDirichletAllocation
 
-### reading csv file
+## Read csv file ###
 letters = []
 
 csv_file_path = "data\shareholders_letter.csv"
@@ -15,10 +16,10 @@ with open(csv_file_path, "r") as csv_file:
     reader = csv.reader(csv_file)
     next(reader)
     for row in reader:
-        full_contents.append(row)
         letters.append(row[3])
 
-#### tokenizing letters' texts and removing stopwords
+
+### tokenize letters' texts and remove stopwords ###
 texts = []
 
 tokenizer = RegexpTokenizer(r'\w+')
@@ -32,9 +33,9 @@ for text in letters:
     stemmed_tokens = [stemmer.stem(text) for text in stopped_tokens]
     texts.append(stemmed_tokens)
 
-## removing tokens which appear only once
+### remove tokens which appear less than five times ###
 all_tokens = sum(texts, [])
-tokens_once = set(word for word in set(all_tokens) if all_tokens.count(word) == 3)
+tokens_once = set(word for word in set(all_tokens) if all_tokens.count(word) == 5)
 
 clean_texts = []
 
@@ -42,11 +43,15 @@ for text in texts:
     once_tokens = [word for word in text if word not in tokens_once]
     clean_texts.append(once_tokens)
 
-# turn our tokenized documents into a id <-> term dictionary
+### Change the texts into Documents Term Matix (dtm) ####
+# turn the tokenized documents into a term dictionary
 dictionary = corpora.Dictionary(clean_texts)
-
 # convert tokenized documents into a document-term matrix
 dtm = [dictionary.doc2bow(text) for text in clean_texts]
 
-# generate LDA model
-ldamodel = gensim.models.ldamodel.LdaModel(dtm, num_topics=10, id2word = dictionary, passes=20)
+### Generate ten topics & ten top words in each topic ###
+num_topics = 10
+lda = gensim.models.ldamodel.LdaModel(dtm, num_topics=num_topics, id2word = dictionary, passes=10)
+
+for i in  lda.show_topics(num_words=4):
+    print (i[0], i[1])

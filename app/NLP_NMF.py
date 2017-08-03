@@ -13,31 +13,30 @@ with open(csv_file_path, "r") as csv_file:
     for row in reader:
         letters.append(row[3])
 
-
 #### Change the texts into Documents Term Matix (dtm) ####
-# remove stopwords and words that appear less than ten times
-vectorizer = text.CountVectorizer(input='letters', stop_words='english', min_df=10)
+# remove stopwords and words that appear less than five times
+vectorizer = text.CountVectorizer(input='letters', stop_words='english', min_df=5)
 # create dtm and convert it into an array
 dtm = vectorizer.fit_transform(letters).toarray()
 # list of words and change it to an array
 vocab = np.array(vectorizer.get_feature_names())
 
-### Ten topics & Ten top words in each topic ###
+### Generate ten topics & ten top words in each topic ###
 num_topics = 10
 num_top_words = 10
 # classifier
-clf = decomposition.NMF(n_components=num_topics, random_state=1)
-doctopic = clf.fit_transform(dtm)
-
+nmf = decomposition.NMF(n_components=num_topics, random_state=1)
+doctopic = nmf.fit_transform(dtm)
 
 ### Print out topic words ###
 topic_words = []
-for topic in clf.components_:
+for topic in nmf.components_:
     word_idx = np.argsort(topic)[::-1][0:num_top_words]
     topic_words.append([vocab[i] for i in word_idx])
 
 for topic in range(len(topic_words)):
     print(" + Topic {}: {}".format(topic, ' '.join(topic_words[topic])))
+
 
 
 #nmf_path = "data\NLP_NMF_topics.csv"
