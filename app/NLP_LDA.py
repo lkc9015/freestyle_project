@@ -4,7 +4,6 @@ import numpy as np
 from sklearn.decomposition import LatentDirichletAllocation
 import matplotlib.pyplot as plt
 
-#shareholders_letter = "data\shareholders_letter.csv"
 ## Read csv file ###
 def read_letter_from_file(csv_file_path):
     letters = []
@@ -32,8 +31,8 @@ def name_of_company(company):
 
 def run():
     file_path = "data\shareholders_letter.csv"
-    letters = read_letter_from_file(csv_file_path = file_path)
-    company = read_company_from_file(csv_file_path = file_path)
+    letters = read_letter_from_file(csv_file_path = file_path)  # read letter, test 1
+    company = read_company_from_file(csv_file_path = file_path)  # read company, test 2
 
     ### Change the texts into Documents Term Matix (dtm) ####
     # remove stopwords and words that appear less than five times
@@ -62,7 +61,7 @@ def run():
 
     ### Relationships between each company and each topic ###
     company = np.asarray(company)
-    num_companies = number_of_comapany(company)
+    num_companies = number_of_comapany(company) # number of company, test 3
     doctopic_grouped = np.zeros((num_companies, n_topics))
 
     for i, name in enumerate(sorted(set(company))):
@@ -75,7 +74,7 @@ def run():
 
     ### Visualization - Heatmap ###
     N, K = doctopic.shape
-    company_names = name_of_company(company) # get companies' name
+    company_names = name_of_company(company) # get companies' name, test 4
     topic_labels = ['Topic #{}'.format(k) for k in range(K)] # Numbering topics
 
     plt.pcolor(doctopic, norm=None, cmap='Blues') # Heat map
