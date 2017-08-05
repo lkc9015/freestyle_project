@@ -42,7 +42,6 @@ for topic in range(len(topic_words)):
 
 ### Relationships between each company and each topic ###
 company = np.asarray(company)
-doctopic_orig = doctopic.copy()
 num_companies = len(set(company))
 doctopic_grouped = np.zeros((num_companies, n_topics))
 
