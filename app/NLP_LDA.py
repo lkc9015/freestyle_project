@@ -8,8 +8,8 @@ import matplotlib.pyplot as plt
 letters = []
 company = []
 
-csv_file_path = "data\shareholders_letter.csv"
-with open(csv_file_path, "r") as csv_file:
+shareholders_letter = "data\shareholders_letter.csv"
+with open(shareholders_letter, "r") as csv_file:
     reader = csv.reader(csv_file)
     next(reader)
     for row in reader:
@@ -18,17 +18,15 @@ with open(csv_file_path, "r") as csv_file:
 
 #### Change the texts into Documents Term Matix (dtm) ####
 # remove stopwords and words that appear less than five times
-vectorizer = text.CountVectorizer(input = letters,  stop_words = 'english', min_df = 10)
-# create dtm and convert it into an array
-dtm = vectorizer.fit_transform(letters).toarray()
-# list of words and change it to an array
-vocab = np.array(vectorizer.get_feature_names())
+vectorizer = text.CountVectorizer(input = letters,  stop_words = 'english', lowercase = True, min_df = 10)
+dtm = vectorizer.fit_transform(letters) # create dtm
+vocab = np.array(vectorizer.get_feature_names()) # list of words and change it to an array
 
 ### Generate ten topics & ten top words in each topic ###
 n_topics = 10
 n_top_words = 10
 # classifier
-lda = LatentDirichletAllocation(n_topics = n_topics, random_state=1)
+lda = LatentDirichletAllocation(n_topics = n_topics, random_state=0)
 doctopic = lda.fit_transform(dtm)
 
 ### Print out topic words ###
@@ -66,3 +64,18 @@ plt.colorbar(cmap='Blues') # add a legend
 plt.tight_layout() # fix margins
 
 plt.show() # print the heatmap
+
+### Visualization - topic distance ###
+from sklearn.manifold import MDS
+from sklearn.metrics.pairwise import cosine_similarity
+
+dist = 1 - cosine_similarity(dtm) # distance
+
+mds = MDS(n_components=2, dissimilarity="precomputed", random_state=0)
+pos = mds.fit_transform(dist)
+xs, ys = pos[:, 0], pos[:, 1]
+for x, y, name in zip(xs, ys, company_names):
+    plt.scatter(x, y)
+    plt.text(x, y, name)
+
+plt.show()
