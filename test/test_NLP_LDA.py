@@ -16,4 +16,4 @@ def test_number_of_company():
 def test_name_of_company():
     company = read_company_from_file("test\example_shareholders_letter.csv")
     name_of_company = set(company)
-    assert name_of_company == {'Aspen ', 'Adobe ', 'ea ', 'Citrix ', 'Compuware '}
+    assert name_of_company == {'Aspen', 'Adobe', 'ea', 'Citrix', 'Compuware'}
