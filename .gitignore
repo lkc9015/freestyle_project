@@ -1,5 +1,4 @@
 .cache/
 .DS_Store
-tests/__pycache__/test_products_app.cpython-36-PYTEST.pyc
-app/__pycache__/
-tests/__pycache__/__init__.cpython-36.pyc
+app/__pycache__
+test/__pycache__
