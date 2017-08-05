@@ -24,9 +24,11 @@ def read_company_from_file(csv_file_path):
             company.append(row[1])
     return company
 
-def number_of_comapany (company):
-    num_companies = len(set(company))
-    return num_companies
+def number_of_comapany(company):
+    return len(set(company))
+
+def name_of_company(company):
+    return set(company)
 
 def run():
     file_path = "data\shareholders_letter.csv"
@@ -60,7 +62,7 @@ def run():
 
     ### Relationships between each company and each topic ###
     company = np.asarray(company)
-    num_companies = len(set(company))
+    num_companies = number_of_comapany(company)
     doctopic_grouped = np.zeros((num_companies, n_topics))
 
     for i, name in enumerate(sorted(set(company))):
@@ -73,7 +75,7 @@ def run():
 
     ### Visualization - Heatmap ###
     N, K = doctopic.shape
-    company_names = set(company) # get companies' name
+    company_names = name_of_company(company) # get companies' name
     topic_labels = ['Topic #{}'.format(k) for k in range(K)] # Numbering topics
 
     plt.pcolor(doctopic, norm=None, cmap='Blues') # Heat map
