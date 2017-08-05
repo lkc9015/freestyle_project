@@ -54,23 +54,15 @@ print (doctopic)
 
 ### Visualization - Heatmap ###
 N, K = doctopic.shape
-# get companies' name
-company_names = set(company)
-# Numbering topics
-topic_labels = ['Topic #{}'.format(k) for k in range(K)]
+company_names = set(company) # get companies' name
+topic_labels = ['Topic #{}'.format(k) for k in range(K)] # Numbering topics
 
-# Heat map
-plt.pcolor(doctopic, norm=None, cmap='Blues')
-# y-axis & x-axis
-plt.yticks(np.arange(doctopic.shape[0])+0.5, company_names)
-plt.xticks(np.arange(doctopic.shape[1])+0.5, topic_labels)
-# flip the y-axis
-plt.gca().invert_yaxis()
-# rotate the ticks on the x-axis 45 degrees
-plt.xticks(rotation=45)
-# add a legend
-plt.colorbar(cmap='Blues')
-# fix margins
-plt.tight_layout()
-# print the heatmap
-plt.show()
+plt.pcolor(doctopic, norm=None, cmap='Blues') # Heat map
+plt.yticks(np.arange(doctopic.shape[0])+0.5, company_names) # y-axis
+plt.xticks(np.arange(doctopic.shape[1])+0.5, topic_labels) # x-axis
+plt.gca().invert_yaxis() # flip the y-axis
+plt.xticks(rotation=45) # rotate the ticks on the x-axis 45 degrees
+plt.colorbar(cmap='Blues') # add a legend
+plt.tight_layout() # fix margins
+
+plt.show() # print the heatmap
