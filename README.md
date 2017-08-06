@@ -20,14 +20,16 @@ This application uses NumPy, scikit-learn and matplotlib libraries.
 -  scikit-learn (>= 2.6 or >= 3.3) is a python library for machine learning. 
 -  Matplotlib (>= 2.7 or >= 3.4) is a Python 2D plotting library.
 
-For Windows users download Numpy and sklearn whl files correspond your Windows and Python versions from the link. 
+For Windows users, download Numpy and sklearn whl files correspond your Windows and Python versions from the link. 
 -  http://www.lfd.uci.edu/~gohlke/pythonlibs/
+
+Download the files in the C:\Python36\Lib\site-packages repository.
+
 
 Mac users can download the files and refer how to install them from 
 -  scikit-learn: https://pypi.python.org/pypi/scikit-learn/0.18.1
 -  NumPy: https://pypi.python.org/pypi/numpy
 
-Download the files in the C:\Python36\Lib\site-packages repository.
 ```shell
 pip install C:\python36\Lib\site-packages\File_Name (For example, C:\python36\Lib\site-packages\numpy-1.13.1+mkl-cp36-cp36m-win_amd64.whl)
  or
