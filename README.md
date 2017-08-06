@@ -47,14 +47,22 @@ Run the application:
 ```shell
 LDA model: python app\NLP_LDA.py
 NMF model: python app\NLP_NMF.py
+
+for Mac users
+LDA model: python3 app/NLP_LDA.py
+NMF model: python3 app/NLP_NMF.py
 ```
 
 Run tests:
 ```shell
+pytest  # test two scripts at the same time
+or
 LDA script: pytest test\test_NLP_LDA.py
 NMF script: pytest test\test_NLP_NMF.py
-or
-pytest  # test two scripts at the same time
+
+for Mac users
+LDA script: pytest test/test_NLP_LDA.py
+NMF script: pytest test/test_NLP_NMF.py
 ```
 
 # Reference
