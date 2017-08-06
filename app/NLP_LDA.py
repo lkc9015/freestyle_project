@@ -57,11 +57,17 @@ def run():
         word_idx = np.argsort(topic)[::-1][0:n_top_words]
         topic_words.append([vocab[i] for i in word_idx])
 
+    print("-" * 101)
+    print("-" * 45 + "Topic words" + "-" * 45)
+    print("-" * 101)
     for topic in range(len(topic_words)):
-        print(" + Topic {}: {}".format(topic, ' '.join(topic_words[topic])))
+        print("+ Topic {}: {}".format(topic, ' '.join(topic_words[topic])))
+    print("-" * 101)
+    print("-" * 101)
 
 
-    ### Relationships between each company and each topic ###
+    ### Topic shares associated with each company ###
+    doctopic = doctopic / np.sum(doctopic, axis=1, keepdims=True)
     company = np.asarray(company)
     num_companies = number_of_comapany(company) # number of company, test 3
     doctopic_grouped = np.zeros((num_companies, n_topics))
@@ -71,8 +77,13 @@ def run():
 
     doctopic = doctopic_grouped
 
-    print (doctopic)
-
+    print("\n" + " |---------------------------------------------------------------------|")
+    print(" " + "|" + "-" * 14 + "Topic shares associated with each company" + "-" * 14 +"|")
+    print(" |---------------------------------------------------------------------|")
+    print(" | T0     T1     T2     T3     T4     T5     T6     T7     T8     T9   |")
+    print(" |---------------------------------------------------------------------|")
+    print(np.round(doctopic,3))
+    print(" -----------------------------------------------------------------------")
 
     ### Visualization - Heatmap ###
     N, K = doctopic.shape
