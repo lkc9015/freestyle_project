@@ -32,7 +32,7 @@ Mac users can download the files and refer how to install them from
 
 ```shell
 pip install C:\python36\Lib\site-packages\File_Name (For example, C:\python36\Lib\site-packages\numpy-1.13.1+mkl-cp36-cp36m-win_amd64.whl)
- or
+or
 pip install numpy
 pip install sklearn
 ```
