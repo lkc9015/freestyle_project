@@ -24,7 +24,7 @@ Third-party Python Packages
 ~~~~~~~~~~~~~~~~~~~~~~
 This application uses NumPy, Scikit-learn, and Matplotlib.
 
-.. figure:: https://github.com/lkc9015/freestyle_project/blob/master/planning/Heatmap.png
+.. figure:: 
    :alt: heatmap icon
    
 **Heatmap result**
