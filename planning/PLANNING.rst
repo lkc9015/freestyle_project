@@ -24,24 +24,29 @@ Third-party Python Packages
 ~~~~~~~~~~~~~~~~~~~~~~
 This application uses NumPy, Scikit-learn, and Matplotlib.
 
-This figure is a **LDA Heatmap result**
+
 .. figure:: https://github.com/lkc9015/freestyle_project/blob/master/planning/Heatmap%20(LDA).png
    :alt: heatmap icon
-   
 
-This figure is a **NMF Heatmap result**
+This figure is a **LDA Heatmap result**
+
+
 .. figure:: https://github.com/lkc9015/freestyle_project/blob/master/planning/Heatmap%20(NMF).png
    :alt: heatmap icon2
    
+This figure is a **NMF Heatmap result**
    
-This figure is a **LDA distance map result**
+
 .. figure:: https://github.com/lkc9015/freestyle_project/blob/master/planning/Distance%20map%20(LDA).png
    :alt: distance icon
    
+This figure is a **LDA distance map result**
+   
 
-This figure is a **NMF distance map result**
 .. figure:: https://github.com/lkc9015/freestyle_project/blob/master/planning/Distance%20map%20(NMF).png
    :alt: distance icon2
+   
+This figure is a **NMF distance map result**
 
 
 
