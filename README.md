@@ -57,4 +57,14 @@ or
 pytest  # test two scripts at the same time
 ```
 
-
+# Reference
+these are references.
+https://de.dariah.eu/tatom/topic_model_python.html#using-non-negative-matrix-factorization
+https://github.com/bmabey/pyLDAvis/blob/master/README.rst
+https://www.youtube.com/watch?v=-llHYUMH9Dg
+https://www.youtube.com/watch?v=BuMu-bdoVrU
+https://github.com/melvinwevers/python-topic-modeling/blob/master/1-create%20corpus.py
+https://github.com/melvinwevers/python-topic-modeling
+https://pythonhosted.org/lda/
+http://nbviewer.jupyter.org/github/bmabey/pyLDAvis/blob/master/notebooks/sklearn.ipynb
+https://rstudio-pubs-static.s3.amazonaws.com/79360_850b2a69980c4488b1db95987a24867a.html
