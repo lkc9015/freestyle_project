@@ -63,7 +63,7 @@ def run():
     print("-" * 101)
     print("-" * 101)
 
-    ### Relationships between each company and each topic ###
+    ### Topic shares associated with each company ###
     doctopic = doctopic / np.sum(doctopic, axis=1, keepdims=True)
     company = np.asarray(company)
     num_companies = number_of_comapany(company) # number of company, test 3
