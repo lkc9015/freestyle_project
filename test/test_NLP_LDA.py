@@ -1,5 +1,6 @@
 from app.NLP_LDA import *
 
+
 def test_read_letters():
     letters = read_letter_from_file("test\example_shareholders_letter.csv")
     assert len(letters) == 38

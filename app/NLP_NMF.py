@@ -4,6 +4,7 @@ import sklearn.feature_extraction.text as text
 from sklearn import decomposition
 import matplotlib.pyplot as plt
 
+
 ### customize function ###
 def read_letter_from_file(csv_file_path):
     letters = []

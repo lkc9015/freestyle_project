@@ -4,6 +4,7 @@ import numpy as np
 from sklearn.decomposition import LatentDirichletAllocation
 import matplotlib.pyplot as plt
 
+
 ### customize function ###
 def read_letter_from_file(csv_file_path):
     letters = []
