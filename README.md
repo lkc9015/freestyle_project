@@ -4,6 +4,7 @@ Python library for analyze corporates' shareholders letter. This uses two natura
 
 For more information about LDA and NMF, click the links below.
 
-LDA: https://en.wikipedia.org/wiki/Latent_Dirichlet_allocation \n
+LDA: https://en.wikipedia.org/wiki/Latent_Dirichlet_allocation
+
 NMF: https://en.wikipedia.org/wiki/Non-negative_matrix_factorization
 
