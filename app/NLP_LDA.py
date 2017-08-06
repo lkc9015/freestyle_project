@@ -47,7 +47,7 @@ def run():
     n_topics = 10
     n_top_words = 10
     # classifier
-    lda = LatentDirichletAllocation(n_topics = n_topics, random_state=0)
+    lda = LatentDirichletAllocation(n_topics = n_topics, learning_method = 'batch', random_state=0)
     doctopic = lda.fit_transform(dtm)
 
 
