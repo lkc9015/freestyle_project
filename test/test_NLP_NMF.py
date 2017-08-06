@@ -1,4 +1,4 @@
-from app.NLP_LDA import *
+from app.NLP_NMF import *
 
 def test_read_letters():
     letters = read_letter_from_file("test\example_shareholders_letter.csv")

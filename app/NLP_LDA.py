@@ -4,7 +4,7 @@ import numpy as np
 from sklearn.decomposition import LatentDirichletAllocation
 import matplotlib.pyplot as plt
 
-## Read csv file ###
+### customize function ###
 def read_letter_from_file(csv_file_path):
     letters = []
     with open(csv_file_path, "r") as csv_file:
@@ -29,6 +29,8 @@ def number_of_comapany(company):
 def name_of_company(company):
     return set(company)
 
+
+### run the code ###
 def run():
     file_path = "data\shareholders_letter.csv"
     letters = read_letter_from_file(csv_file_path = file_path)  # read letter, test 1
