@@ -58,7 +58,6 @@ pytest  # test two scripts at the same time
 ```
 
 # Reference
-these are references.
 https://de.dariah.eu/tatom/topic_model_python.html#using-non-negative-matrix-factorization
 https://github.com/bmabey/pyLDAvis/blob/master/README.rst
 https://www.youtube.com/watch?v=-llHYUMH9Dg
