@@ -45,8 +45,8 @@ pip install matplotlib
 # Usage
 Run the application:
 ```shell
--  LDA model: python app\NLP_LDA.py
--  NMF model: python app\NLP_NMF.py
+LDA model: python app\NLP_LDA.py
+NMF model: python app\NLP_NMF.py
 ```
 
 Run tests:
