@@ -12,7 +12,7 @@ For more information about LDA and NMF, click the links below.
 
 
 # Prerequisites
-This NLP applications assumes you have installed Python 3.x for Windows and corresponding Pips. It may work, but is untested on Python 2.x and other operating systems.
+This NLP application assumes you have installed Python 3.x for Windows and corresponding Pips. It may work, but is untested on Python 2.x and other operating systems.
 
 # Installation
 This application uses NumPy, scikit-learn and matplotlib libraries.
