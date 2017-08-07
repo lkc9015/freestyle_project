@@ -2,7 +2,7 @@
 
 This application analyzes five companies' (Adobe, ea, Aspen, Compuware and Citrix) shareholders letter from 1993 to 2003 with two different natural language processing methods (LDA & NMF). The dataset is in the "data" repository.
 
-With two methods, it shows ten topics in 48 letters, topic shares associated with each company. In addition, it visualizes the results with a heatmap and a topic distance map. 
+With two methods, it shows ten topics in 48 letters and topic shares associated with each company. In addition, it visualizes the results with a heatmap and a topic distance map. 
 
 For more information about LDA and NMF, click the links below.
 
