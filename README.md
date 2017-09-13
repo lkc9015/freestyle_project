@@ -15,26 +15,29 @@ For more information about LDA and NMF, click the links below.
 This NLP application assumes you have installed Python 3.x for Windows and corresponding Pips. It may work, but is untested on Python 2.x and other operating systems.
 
 # Installation
-This application uses NumPy, scikit-learn and matplotlib libraries.
+This application uses NumPy, scikit-learn, matplotlib and SciPy libraries.
 -  Numpy (>= 1.6.1) is a python library for support for large, multi-dimensional arrays and matrices, along with a large collection of high-level mathematical functions to operate on these arrays.
 -  scikit-learn (>= 2.6 or >= 3.3) is a python library for machine learning. 
 -  Matplotlib (>= 2.7 or >= 3.4) is a Python 2D plotting library.
+-  SciPy (>= 0.10)
 
-For Windows users, download Numpy and sklearn whl files correspond your Windows and Python versions from the link. 
+For Windows users, download Numpy, sklearn and SciPy whl files correspond your Windows and Python versions from the link. 
 -  http://www.lfd.uci.edu/~gohlke/pythonlibs/
 
 Download the files in the C:\Python36\Lib\site-packages repository.
 
 
 Mac users can download the files and refer how to install them from 
--  scikit-learn: https://pypi.python.org/pypi/scikit-learn/0.18.1
 -  NumPy: https://pypi.python.org/pypi/numpy
+-  scikit-learn: https://pypi.python.org/pypi/scikit-learn/0.18.1
+-  SciPy: https://pypi.python.org/pypi/scipy
 
 ```shell
 pip install C:\python36\Lib\site-packages\File_Name (For example, C:\python36\Lib\site-packages\numpy-1.13.1+mkl-cp36-cp36m-win_amd64.whl)
 or
 pip install numpy
 pip install sklearn
+pip install scipy
 ```
 
 Install matplotlib
